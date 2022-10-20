@@ -1,10 +1,13 @@
 import axios from '../axios';
 
-const handleLogin = (email, password) => {
+export const handleLoginAPI = (email, password) => {
     return axios.post('api/login', { email, password });
 };
 
-const getAllUsers = (id) => {
+export const getAllUsersAPI = (id) => {
     return axios.get(`/api/get-all-users?id=${id}`);
 };
-export { handleLogin, getAllUsers };
+
+export const createNewUserAPI = (user) => {
+    return axios.post('/api/create-new-user', user);
+};

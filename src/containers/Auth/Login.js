@@ -5,7 +5,7 @@ import { push } from 'connected-react-router';
 import * as actions from '../../store/actions';
 import './Login.scss';
 import { FormattedMessage } from 'react-intl';
-import { handleLogin } from '../../services/userService';
+import { handleLoginAPI } from '../../services/userService';
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -30,7 +30,7 @@ class Login extends Component {
     handleLogin = async () => {
         this.setState({ errMessage: '' });
         try {
-            let data = await handleLogin(
+            let data = await handleLoginAPI(
                 this.state.username,
                 this.state.password
             );
@@ -86,7 +86,7 @@ class Login extends Component {
                                     }}
                                 >
                                     <i
-                                        class={
+                                        className={
                                             this.state.isShowPassword
                                                 ? 'fas fa-eye-slash'
                                                 : 'far fa-eye'
@@ -119,8 +119,8 @@ class Login extends Component {
                             </span>
                         </div>
                         <div className="col-12 social-login">
-                            <i class="fab fa-google-plus-g google"></i>
-                            <i class="fab fa-facebook-f facebook"></i>
+                            <i className="fab fa-google-plus-g google"></i>
+                            <i className="fab fa-facebook-f facebook"></i>
                         </div>
                     </div>
                 </div>
