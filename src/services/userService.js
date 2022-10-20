@@ -11,3 +11,11 @@ export const getAllUsersAPI = (id) => {
 export const createNewUserAPI = (user) => {
     return axios.post('/api/create-new-user', user);
 };
+
+export const deleteUserAPI = (userId) => {
+    return axios.delete('/api/delete-user', {
+        data: {
+            id: userId,
+        },
+    });
+};
