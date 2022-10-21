@@ -19,3 +19,7 @@ export const deleteUserAPI = (userId) => {
         },
     });
 };
+
+export const editUserAPI = (user) => {
+    return axios.put('/api/edit-user', user);
+};
