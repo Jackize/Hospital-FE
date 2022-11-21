@@ -8,9 +8,14 @@ import lookup from '../../assets/133744-dichvuxetnghiem.png';
 import header from '../../assets/133744-suckhoetinhthan.png';
 import teeth from '../../assets/104635-khamnhakhoa.png';
 import { FormattedMessage } from 'react-intl';
-
+import { LANGUAGES } from '../../utils';
+import { changeLanguageApp } from '../../store/actions';
 class HomeHeader extends Component {
+    changeLanguage = (language) => {
+        this.props.changeLanguage(language);
+    };
     render() {
+        let language = this.props.language;
         return (
             <React.Fragment>
                 <div className="home-header">
@@ -63,11 +68,39 @@ class HomeHeader extends Component {
                         </div>
                         <div className="right-content">
                             <div className="support">
-                                <i class="fas fa-question-circle"></i>
+                                <i className="fas fa-question-circle"></i>
                                 <FormattedMessage id="home-header.support" />
                             </div>
-                            <div className="language-vn">VN</div>
-                            <div className="language-en">EN</div>
+                            <div
+                                className={
+                                    language === LANGUAGES.VI
+                                        ? 'language-vn active'
+                                        : 'language-vn'
+                                }
+                            >
+                                <span
+                                    onClick={() =>
+                                        this.changeLanguage(LANGUAGES.VI)
+                                    }
+                                >
+                                    VN
+                                </span>
+                            </div>
+                            <div
+                                className={
+                                    language === LANGUAGES.EN
+                                        ? 'language-en active'
+                                        : 'language-en'
+                                }
+                            >
+                                <span
+                                    onClick={() =>
+                                        this.changeLanguage(LANGUAGES.EN)
+                                    }
+                                >
+                                    EN
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -167,12 +200,14 @@ class HomeHeader extends Component {
 const mapStateToProps = (state) => {
     return {
         isLoggedIn: state.user.isLoggedIn,
-        language: state.user.language,
+        language: state.app.language,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {};
+    return {
+        changeLanguage: (language) => dispatch(changeLanguageApp(language)),
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeHeader);

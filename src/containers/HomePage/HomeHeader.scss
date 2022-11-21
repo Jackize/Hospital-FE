@@ -59,15 +59,30 @@
                     color: #45c3d2;
                 }
             }
-            .language-vn,
-            .language-en {
+            .language-vn {
                 cursor: pointer;
-
+                opacity: 0.2;
                 &.active {
-                    color: #45c3d2;
+                    opacity: 1;
+                    span {
+                        color: #45c3d2;
+                    }
                 }
                 &:hover {
-                    color: #45c3d2;
+                    opacity: 1;
+                }
+            }
+            .language-en {
+                cursor: pointer;
+                opacity: 0.2;
+                &.active {
+                    opacity: 1;
+                    span {
+                        color: #45c3d2;
+                    }
+                }
+                &:hover {
+                    opacity: 1;
                 }
             }
         }
